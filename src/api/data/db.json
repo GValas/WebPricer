@@ -1,0 +1,388 @@
+{
+  "currencies": [
+    {
+      "code": "EUR",
+      "rate": 0.08
+    },
+    {
+      "code": "USD",
+      "rate": 0.05
+    }
+  ],
+  "underlyings": [
+    {
+      "code": "BNP Paribas",
+      "currency": "EUR",
+      "spot": 54,
+      "volatility": 0.3
+    },
+    {
+      "code": "Société Générale",
+      "currency": "EUR",
+      "spot": 25,
+      "volatility": 0.4
+    }
+  ],
+  "products": [
+    {
+      "id": "4ae51bf2-b4e8-4454-aed9-a230cf814e12",
+      "payoff": {
+        "maturityDate": "2019-07-17T22:00:00.000Z",
+        "strike": 35,
+        "vanillaType": "put",
+        "exerciseMode": "american"
+      },
+      "quantity": 1,
+      "quantoCurrency": "EUR",
+      "underlying": "BNPP.PA",
+      "quote": {
+        "price": 15.711311897523917,
+        "delta": 0.6615388914695212,
+        "gamma": 0.0010973170992420072,
+        "vega": 36.57723664140024
+      }
+    },
+    {
+      "id": "212da1eb-7e2f-4567-9f11-cfedfe631c9d",
+      "payoff": {
+        "maturityDate": "2019-10-18T22:00:00.000Z",
+        "strike": 50,
+        "vanillaType": "call",
+        "exerciseMode": "european"
+      },
+      "quantity": 1,
+      "quantoCurrency": "EUR",
+      "underlying": "BNPP.PA",
+      "quote": {
+        "price": 15.711311897523917,
+        "delta": 0.6615388914695212,
+        "gamma": 0.0010973170992420072,
+        "vega": 36.57723664140024
+      }
+    },
+    {
+      "id": "71c2d44a-9a0b-4d39-9737-ad21734ba59f",
+      "payoff": {
+        "maturityDate": "2019-11-21T23:00:00.000Z",
+        "strike": 25,
+        "vanillaType": "call",
+        "exerciseMode": "american"
+      },
+      "quantity": 1,
+      "quantoCurrency": "USD",
+      "underlying": "SOGN.PA",
+      "quote": {
+        "price": 15.711311897523917,
+        "delta": 0.6615388914695212,
+        "gamma": 0.0010973170992420072,
+        "vega": 36.57723664140024
+      }
+    },
+    {
+      "id": "696373df-b382-48b1-98c7-951d96039406",
+      "payoff": {
+        "maturityDate": "2018-08-14T22:00:00.000Z",
+        "strike": 76,
+        "vanillaType": "put",
+        "exerciseMode": "american"
+      },
+      "quantity": 1,
+      "quantoCurrency": "EUR",
+      "underlying": "SOGN.PA",
+      "quote": {
+        "price": 15.711311897523917,
+        "delta": 0.6615388914695212,
+        "gamma": 0.0010973170992420072,
+        "vega": 36.57723664140024
+      }
+    },
+    {
+      "id": "14675790-f9bc-40f3-819c-0b69503bd7d3",
+      "payoff": {
+        "maturityDate": "2019-02-23T23:00:00.000Z",
+        "strike": 18,
+        "vanillaType": "put",
+        "exerciseMode": "european"
+      },
+      "quantity": 1,
+      "quantoCurrency": "USD",
+      "underlying": "SOGN.PA",
+      "quote": {
+        "price": 15.711311897523917,
+        "delta": 0.6615388914695212,
+        "gamma": 0.0010973170992420072,
+        "vega": 36.57723664140024
+      }
+    },
+    {
+      "id": "3cc55b20-6e54-4128-9f9e-fd5133b2d4ad",
+      "payoff": {
+        "maturityDate": "2019-01-14T23:00:00.000Z",
+        "strike": 97,
+        "vanillaType": "call",
+        "exerciseMode": "american"
+      },
+      "quantity": 1,
+      "quantoCurrency": "USD",
+      "underlying": "HSBA.L",
+      "quote": {
+        "price": 15.711311897523917,
+        "delta": 0.6615388914695212,
+        "gamma": 0.0010973170992420072,
+        "vega": 36.57723664140024
+      }
+    },
+    {
+      "id": "773b6fbc-4443-4253-bf84-b5b95edd8e87",
+      "payoff": {
+        "maturityDate": "2018-04-24T22:00:00.000Z",
+        "strike": 59,
+        "vanillaType": "put",
+        "exerciseMode": "european"
+      },
+      "quantity": 1,
+      "quantoCurrency": "USD",
+      "underlying": "BNPP.PA",
+      "quote": {
+        "price": 15.711311897523917,
+        "delta": 0.6615388914695212,
+        "gamma": 0.0010973170992420072,
+        "vega": 36.57723664140024
+      }
+    },
+    {
+      "id": "76c1d326-f20c-4c92-8b90-b1b7057e73c8",
+      "payoff": {
+        "maturityDate": "2018-07-08T22:00:00.000Z",
+        "strike": 35,
+        "vanillaType": "call",
+        "exerciseMode": "american"
+      },
+      "quantity": 1,
+      "quantoCurrency": "EUR",
+      "underlying": "BNPP.PA",
+      "quote": {
+        "price": 15.711311897523917,
+        "delta": 0.6615388914695212,
+        "gamma": 0.0010973170992420072,
+        "vega": 36.57723664140024
+      }
+    },
+    {
+      "id": "84b2acde-d308-4608-bd13-7dccd463426d",
+      "payoff": {
+        "maturityDate": "2019-05-12T22:00:00.000Z",
+        "strike": 96,
+        "vanillaType": "put",
+        "exerciseMode": "american"
+      },
+      "quantity": 1,
+      "quantoCurrency": "USD",
+      "underlying": "HSBA.L",
+      "quote": {
+        "price": 15.711311897523917,
+        "delta": 0.6615388914695212,
+        "gamma": 0.0010973170992420072,
+        "vega": 36.57723664140024
+      }
+    },
+    {
+      "id": "637ee95d-c8ea-476e-b98d-0cd3f0e8bf13",
+      "payoff": {
+        "maturityDate": "2019-01-20T23:00:00.000Z",
+        "strike": 80,
+        "vanillaType": "put",
+        "exerciseMode": "european"
+      },
+      "quantity": 1,
+      "quantoCurrency": "USD",
+      "underlying": "HSBA.L",
+      "quote": {
+        "price": 15.711311897523917,
+        "delta": 0.6615388914695212,
+        "gamma": 0.0010973170992420072,
+        "vega": 36.57723664140024
+      }
+    },
+    {
+      "id": "718f9cef-c546-4e52-b9c9-9ec7efd70662",
+      "payoff": {
+        "maturityDate": "2018-09-27T22:00:00.000Z",
+        "strike": 62,
+        "vanillaType": "put",
+        "exerciseMode": "american"
+      },
+      "quantity": 1,
+      "quantoCurrency": "EUR",
+      "underlying": "HSBA.L",
+      "quote": {
+        "price": 15.711311897523917,
+        "delta": 0.6615388914695212,
+        "gamma": 0.0010973170992420072,
+        "vega": 36.57723664140024
+      }
+    },
+    {
+      "id": "4b254dca-c0a7-4813-b451-e14f0ba98b2e",
+      "payoff": {
+        "maturityDate": "2019-02-08T23:00:00.000Z",
+        "strike": 77,
+        "vanillaType": "call",
+        "exerciseMode": "american"
+      },
+      "quantity": 1,
+      "quantoCurrency": "USD",
+      "underlying": "BNPP.PA",
+      "quote": {
+        "price": 15.711311897523917,
+        "delta": 0.6615388914695212,
+        "gamma": 0.0010973170992420072,
+        "vega": 36.57723664140024
+      }
+    },
+    {
+      "id": "98893fff-666f-4462-bc40-e5daa70c5f1f",
+      "payoff": {
+        "maturityDate": "2019-03-08T23:00:00.000Z",
+        "strike": 59,
+        "vanillaType": "put",
+        "exerciseMode": "american"
+      },
+      "quantity": 1,
+      "quantoCurrency": "EUR",
+      "underlying": "SOGN.PA",
+      "quote": {
+        "price": 15.711311897523917,
+        "delta": 0.6615388914695212,
+        "gamma": 0.0010973170992420072,
+        "vega": 36.57723664140024
+      }
+    },
+    {
+      "id": "a38b6b0e-61e9-4d98-aba8-fb995569bb91",
+      "payoff": {
+        "maturityDate": "2019-05-05T22:00:00.000Z",
+        "strike": 12,
+        "vanillaType": "put",
+        "exerciseMode": "american"
+      },
+      "quantity": 1,
+      "quantoCurrency": "USD",
+      "underlying": "HSBA.L",
+      "quote": {
+        "price": 15.711311897523917,
+        "delta": 0.6615388914695212,
+        "gamma": 0.0010973170992420072,
+        "vega": 36.57723664140024
+      }
+    },
+    {
+      "id": "9af7892a-5ada-43f6-9e0b-c506819a7ecd",
+      "payoff": {
+        "maturityDate": "2019-10-29T23:00:00.000Z",
+        "strike": 29,
+        "vanillaType": "call",
+        "exerciseMode": "american"
+      },
+      "quantity": 1,
+      "quantoCurrency": "EUR",
+      "underlying": "HSBA.L",
+      "quote": {
+        "price": 15.711311897523917,
+        "delta": 0.6615388914695212,
+        "gamma": 0.0010973170992420072,
+        "vega": 36.57723664140024
+      }
+    },
+    {
+      "id": "bac2ca16-b233-478f-90da-e21ed638b4aa",
+      "payoff": {
+        "maturityDate": "2019-05-01T22:00:00.000Z",
+        "strike": 13,
+        "vanillaType": "call",
+        "exerciseMode": "european"
+      },
+      "quantity": 1,
+      "quantoCurrency": "EUR",
+      "underlying": "BNPP.PA",
+      "quote": {
+        "price": 15.711311897523917,
+        "delta": 0.6615388914695212,
+        "gamma": 0.0010973170992420072,
+        "vega": 36.57723664140024
+      }
+    },
+    {
+      "id": "ff0ad781-9370-4018-9773-c4d901085913",
+      "payoff": {
+        "maturityDate": "2019-01-16T23:00:00.000Z",
+        "strike": 52,
+        "vanillaType": "put",
+        "exerciseMode": "european"
+      },
+      "quantity": 1,
+      "quantoCurrency": "USD",
+      "underlying": "SOGN.PA",
+      "quote": {
+        "price": 15.711311897523917,
+        "delta": 0.6615388914695212,
+        "gamma": 0.0010973170992420072,
+        "vega": 36.57723664140024
+      }
+    },
+    {
+      "id": "87dcf0d1-6343-4623-9c5b-f9b76669918d",
+      "payoff": {
+        "maturityDate": "2018-03-30T22:00:00.000Z",
+        "strike": 84,
+        "vanillaType": "call",
+        "exerciseMode": "european"
+      },
+      "quantity": 1,
+      "quantoCurrency": "USD",
+      "underlying": "BNPP.PA",
+      "quote": {
+        "price": 15.711311897523917,
+        "delta": 0.6615388914695212,
+        "gamma": 0.0010973170992420072,
+        "vega": 36.57723664140024
+      }
+    },
+    {
+      "id": "e82e658c-b00f-4ce4-810a-03aa82d128d3",
+      "payoff": {
+        "maturityDate": "2019-02-08T23:00:00.000Z",
+        "strike": 58,
+        "vanillaType": "call",
+        "exerciseMode": "european"
+      },
+      "quantity": 1,
+      "quantoCurrency": "EUR",
+      "underlying": "SOGN.PA",
+      "quote": {
+        "price": 15.711311897523917,
+        "delta": 0.6615388914695212,
+        "gamma": 0.0010973170992420072,
+        "vega": 36.57723664140024
+      }
+    },
+    {
+      "id": "22cb560e-08fc-4539-bb76-fbfd900a8adc",
+      "payoff": {
+        "maturityDate": "2018-07-16T22:00:00.000Z",
+        "strike": 54,
+        "vanillaType": "call",
+        "exerciseMode": "european"
+      },
+      "quantity": 1,
+      "quantoCurrency": "USD",
+      "underlying": "SOGN.PA",
+      "quote": {
+        "price": 15.711311897523917,
+        "delta": 0.6615388914695212,
+        "gamma": 0.0010973170992420072,
+        "vega": 36.57723664140024
+      }
+    }
+  ]
+}
