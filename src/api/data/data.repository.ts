@@ -22,6 +22,14 @@ export class DataRepository implements OnModuleInit {
     return this.db.get('products');
   }
 
+  get currencies() {
+    return this.db.get('currencies');
+  }
+
+  get underlyings() {
+    return this.db.get('underlyings');
+  }
+
   onModuleInit() {
     logger.log('onModuleInit');
 

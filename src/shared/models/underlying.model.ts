@@ -8,6 +8,7 @@ export interface Underlying {
 }
 
 export enum UnderlyingCode {
-  BNPP = 'BNP Paribas',
-  SOGE = 'Société Générale',
+  BNPP = 'BNPP.PA',
+  SOGE = 'SOGN.PA',
+  HSBC = 'HSBA.L',
 }

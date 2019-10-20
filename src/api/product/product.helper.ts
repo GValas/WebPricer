@@ -1,8 +1,9 @@
 import { Product } from '../../shared/models/product.model';
-import { CurrencyCode, UnderlyingCode } from '../../shared/models/currency.model';
+import { CurrencyCode } from '../../shared/models/currency.model';
 import { VanillaType, ExerciseMode } from '../../shared/models/payoff.vanilla.model';
 import * as uuid from 'uuid';
 import { randomDate, randomEnum, randomNumber } from '../../shared/helpers/random';
+import { UnderlyingCode } from '../../shared/models/underlying.model';
 
 export function generateProducts(size: number): Product[] {
   const products: Product[] = [];
