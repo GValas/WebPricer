@@ -1,7 +1,7 @@
 import { Controller, Param, Get } from '@nestjs/common';
 import { UnderlyingService } from './underlying.service';
-import { UnderlyingCode } from '../../shared/models/underlying.model';
- 
+import { UnderlyingCode } from "../../shared/models/underlying-code";
+
 @Controller('underlyings')
 export class UnderlyingController {
 

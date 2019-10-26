@@ -1,6 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { DataRepository } from '../data/data.repository';
-import { UnderlyingCode } from '../../shared/models/underlying.model';
+import { UnderlyingCode } from "../../shared/models/underlying-code";
 const logger: Logger = new Logger('UnderlyingService');
 
 @Injectable()

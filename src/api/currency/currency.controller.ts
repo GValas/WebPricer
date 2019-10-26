@@ -1,6 +1,6 @@
 import { Controller, Get, Param } from '@nestjs/common';
 import { CurrencyService } from './currency.service';
-import { CurrencyCode } from '../../shared/models/currency.model';
+import { CurrencyCode } from "../../shared/models/currency-code";
 
 @Controller('currencies')
 export class CurrencyController {

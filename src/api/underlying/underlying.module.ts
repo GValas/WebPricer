@@ -6,5 +6,6 @@ import { DataRepository } from '../data/data.repository';
 @Module({
   providers: [UnderlyingService, DataRepository],
   controllers: [UnderlyingController],
+  exports: [UnderlyingService],
 })
 export class UnderlyingModule { }

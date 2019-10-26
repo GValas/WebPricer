@@ -22,6 +22,7 @@
 * swagger
 * socket-io
 * hosted on Sinology
+* use bcrypt to encrypt passwords
 
 ### front-end
 * angular based

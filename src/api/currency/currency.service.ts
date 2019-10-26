@@ -1,5 +1,5 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { CurrencyCode } from '../../shared/models/currency.model';
+import { CurrencyCode } from "../../shared/models/currency-code";
 import { DataRepository } from '../data/data.repository';
 
 const logger: Logger = new Logger('CurrencyService');

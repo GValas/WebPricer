@@ -2,8 +2,8 @@ import { Product } from '../../../shared/models/product.model';
 import { ValidateNested, IsEnum, IsUUID, IsOptional } from 'class-validator';
 import { VanillaPayoffDto } from './vanilla.payoff.dto';
 import { Type } from 'class-transformer';
-import { CurrencyCode } from '../../../shared/models/currency.model';
-import { UnderlyingCode } from '../../../shared/models/underlying.model';
+import { CurrencyCode } from "../../../shared/models/currency-code";
+import { UnderlyingCode } from "../../../shared/models/underlying-code";
 
 export class ProductDto implements Product {
 

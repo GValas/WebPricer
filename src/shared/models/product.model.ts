@@ -1,6 +1,7 @@
-import { CurrencyCode, UnderlyingCode } from './currency.model';
+import { CurrencyCode } from "./currency-code";
 import { VanillaPayoff } from './payoff.vanilla.model';
 import { Quote } from './quote.model';
+import { UnderlyingCode } from "./underlying-code";
 
 export interface Product {
   id: string;

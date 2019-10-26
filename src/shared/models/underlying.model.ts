@@ -1,4 +1,5 @@
-import { Currency, CurrencyCode } from './currency.model';
+import { Currency } from './currency.model';
+import { CurrencyCode } from "./currency-code";
 
 export interface Underlying {
   code: string;
@@ -7,8 +8,4 @@ export interface Underlying {
   currency: CurrencyCode;
 }
 
-export enum UnderlyingCode {
-  BNPP = 'BNPP.PA',
-  SOGE = 'SOGN.PA',
-  HSBC = 'HSBA.L',
-}
+
