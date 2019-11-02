@@ -1,11 +1,9 @@
 import { Currency } from './currency.model';
-import { CurrencyCode } from "./currency-code";
+import { Document } from 'mongoose';
 
-export interface Underlying {
+export interface Underlying extends Document {
   code: string;
   spot: number;
   volatility: number;
-  currency: CurrencyCode;
+  currency: string;
 }
-
-

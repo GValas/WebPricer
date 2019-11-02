@@ -1,16 +1,9 @@
+import { ExerciseMode } from './exercise-mode';
+import { VanillaType } from './vanilla-type';
+
 export interface VanillaPayoff {
   strike: number;
   maturityDate: Date;
   exerciseMode: ExerciseMode;
   vanillaType: VanillaType;
-}
-
-export enum VanillaType {
-  Call = 'call',
-  Put = 'put',
-}
-
-export enum ExerciseMode {
-  European = 'european',
-  American = 'american',
 }

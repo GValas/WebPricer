@@ -1,13 +1,12 @@
-import { CurrencyCode } from "./currency-code";
+import { Document } from 'mongoose';
 import { VanillaPayoff } from './payoff.vanilla.model';
 import { Quote } from './quote.model';
-import { UnderlyingCode } from "./underlying-code";
 
-export interface Product {
+export interface Product extends Document {
   id: string;
   quantity: number;
-  underlying: UnderlyingCode;
-  quantoCurrency: CurrencyCode;
+  underlying: string;
+  quantoCurrency: string;
   payoff: VanillaPayoff;
   quote?: Quote;
 }
