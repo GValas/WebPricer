@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Product } from '../../../shared/models/product.model';
-import { Quote } from '../../../shared/models/quote.model';
+import { Product } from '../../../shared/interfaces/product.interface';
+import { Quote } from '../../../shared/interfaces/quote.interface';
 import { BlackScholes } from '../../../shared/helpers/blackscholes';
 import { sleep } from '../../../shared/helpers/async';
 

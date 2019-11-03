@@ -2,8 +2,7 @@ import { Module, NestModule, MiddlewareConsumer, ValidationPipe } from '@nestjs/
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { logger } from './utils/logger.middleware';
-import { APP_FILTER, APP_PIPE } from '@nestjs/core';
-import { HttpExceptionFilter } from './utils/http-exception.filter';
+import { APP_FILTER, APP_PIPE, APP_INTERCEPTOR } from '@nestjs/core';
 import { PriceModule } from './price/price.module';
 import { ProductModule } from './products/product.module';
 import { UnderlyingModule } from './marketdata/underlyings/underlying.module';
@@ -12,6 +11,8 @@ import { AuthModule } from './auth/auth.module';
 import { UsersModule } from './users/users.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import config from './config';
+import { MongoExceptionFilter } from './utils/http-exception.filter';
+import { RequestMonitorInterceptor } from './utils/request-monitor.interceptor';
 
 @Module({
   imports: [
@@ -31,6 +32,14 @@ import config from './config';
     {
       provide: APP_PIPE,
       useClass: ValidationPipe,
+    },
+    {
+      provide: APP_FILTER,
+      useClass: MongoExceptionFilter,
+    },
+    {
+      provide: APP_INTERCEPTOR,
+      useClass: RequestMonitorInterceptor,
     },
   ],
 })

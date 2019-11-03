@@ -1,6 +1,6 @@
 import { IsEnum, IsNumber, IsDateString } from 'class-validator';
-import { ExerciseMode } from '../../../shared/models/exercise-mode';
-import { VanillaType } from '../../../shared/models/vanilla-type';
+import { ExerciseMode } from '../../../shared/enums/exercise-mode.enum';
+import { VanillaType } from '../../../shared/enums/vanilla-type.enum';
 export class VanillaPayoffDto {
 
     @IsNumber()

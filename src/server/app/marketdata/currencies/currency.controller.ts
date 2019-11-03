@@ -1,10 +1,10 @@
-import { Controller, Get, Param, Body, UseInterceptors, Post, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Param, Body, UseInterceptors, Post, Delete, Put, UseFilters } from '@nestjs/common';
 import { CurrencyService } from './currency.service';
-import { CreateCurrencyDto } from './create-currency-dto';
+import { CurrencyCreateDto } from './currency-create.dto';
 import { Roles } from '../../utils/roles.decorator';
 import { UserRole } from '../../users/user-role.enum';
+import { CurrencyUpdateDto } from './currency-update.dto';
 
-@Roles(UserRole.User)
 @Controller('currencies')
 export class CurrencyController {
 
@@ -20,22 +20,22 @@ export class CurrencyController {
         return await this.currencyService.findByCode(code);
     }
 
-    @Roles(UserRole.Admin)
     @Post()
-    async create(@Body() currency: CreateCurrencyDto) {
+    @Roles(UserRole.Admin)
+    async create(@Body() currency: CurrencyCreateDto) {
         return await this.currencyService.create(currency);
     }
 
+    @Delete(':code')
     @Roles(UserRole.Admin)
-    @Delete(':id')
-    async delete(@Param('id') id: string) {
-        return await this.currencyService.delete(id);
+    async delete(@Param('code') code: string) {
+        return await this.currencyService.deleteByCode(code);
     }
 
+    @Put(':code')
     @Roles(UserRole.Admin)
-    @Put(':id')
-    async update(@Param('id') id: string, @Body() article: CreateCurrencyDto) {
-        return await this.currencyService.update(id, article);
+    async update(@Param('code') code: string, @Body() currency: CurrencyUpdateDto) {
+        return await this.currencyService.updateByCode(code, currency);
     }
 
 }

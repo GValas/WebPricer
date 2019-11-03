@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Underlying } from '../../../../shared/models/underlying.model';
+import { Underlying } from '../../../../shared/interfaces/underlying.interface';
 const logger: Logger = new Logger('UnderlyingService');
 
 @Injectable()

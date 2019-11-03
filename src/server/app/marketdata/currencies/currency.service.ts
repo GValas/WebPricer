@@ -1,8 +1,9 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Currency } from '../../../../shared/models/currency.model';
-import { CreateCurrencyDto } from './create-currency-dto';
+import { Currency } from '../../../../shared/interfaces/currency.interface';
+import { CurrencyCreateDto } from './currency-create.dto';
+import { CurrencyUpdateDto } from './currency-update.dto';
 
 const logger: Logger = new Logger('CurrencyService');
 
@@ -25,20 +26,24 @@ export class CurrencyService {
             .exec();
     }
 
-    async create(currency: CreateCurrencyDto) {
+    async create(currency: CurrencyCreateDto) {
+        logger.log(`create currency=${JSON.stringify(currency)}`);
         const createdCurrency = new this.currencyModel(currency);
         return await createdCurrency
             .save();
     }
 
-    async update(id: string, currency: CreateCurrencyDto) {
+    async updateByCode(code: string, currency: CurrencyUpdateDto) {
+        logger.log(`update, code=${code}, currency=${JSON.stringify(currency)}`);
         return await this.currencyModel
-            .findByIdAndUpdate(id, currency, { new: true });
+            .updateOne({ code }, currency)
+            .exec();
     }
 
-    async delete(id: string) {
+    async deleteByCode(code: string) {
         return await this.currencyModel
-            .findByIdAndRemove(id);
+            .deleteOne({ code })
+            .exec();
     }
 
 }
