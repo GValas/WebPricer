@@ -1,18 +1,18 @@
 import { Module, NestModule, MiddlewareConsumer, ValidationPipe } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { logger } from './utils/logger.middleware';
+import { logger } from './utils/middleware/logger.middleware';
 import { APP_FILTER, APP_PIPE, APP_INTERCEPTOR } from '@nestjs/core';
 import { PriceModule } from './price/price.module';
 import { ProductModule } from './products/product.module';
 import { UnderlyingModule } from './marketdata/underlyings/underlying.module';
 import { CurrencyModule } from './marketdata/currencies/currency.module';
 import { AuthModule } from './auth/auth.module';
-import { UsersModule } from './users/users.module';
+import { UsersModule } from './users/user.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import config from './config';
-import { MongoExceptionFilter } from './utils/http-exception.filter';
-import { RequestMonitorInterceptor } from './utils/request-monitor.interceptor';
+import { MongoExceptionFilter } from './utils/filters/mongo-exception.filter';
+import { RequestMonitorInterceptor } from './utils/interceptors/request-monitor.interceptor';
 
 @Module({
   imports: [

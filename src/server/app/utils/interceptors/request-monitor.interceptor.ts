@@ -2,17 +2,9 @@ import { CallHandler, ExecutionContext, Injectable, NestInterceptor, Logger } fr
 import { Observable } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
 import * as uuid from 'uuid';
+import { httpResponse } from '../http-response.interface';
 
 const logger: Logger = new Logger('RequestMonitorInterceptor');
-
-interface httpResponse {
-  request: {
-    startDate: Date;
-    endDate: Date;
-    durationInMs: number;
-  };
-  reponse: any;
-}
 
 @Injectable()
 export class RequestMonitorInterceptor implements NestInterceptor {

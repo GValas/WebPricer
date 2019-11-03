@@ -5,10 +5,10 @@
     "author": "",
     "license": "MIT",
     "scripts": {
+        "server:app:start:dev": "nodemon --config ./src/server/app/nodemon.json",
         "mongo:start": "mongod --dbpath=C:/Users/Gege/Temp/WebPricer",
         "server:app:build": "tsc -p ./src/server/app/tsconfig.build.json",
         "server:app:start": "ts-node -r tsconfig-paths/register ./src/server/app/main.ts",
-        "server:app:start:dev": "nodemon --config ./src/server/app/nodemon.json",
         "server:app:start:debug": "nodemon --config ./src/server/app/nodemon-debug.json",
         "server:app:start:prod": "node dist/server/app/main.js"
     },

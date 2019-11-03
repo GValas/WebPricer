@@ -11,9 +11,11 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
             ignoreExpiration: false,
             secretOrKey: config.secretKey,
         });
+        console.log('--- jwt ---');
     }
 
     async validate(payload: any) {
+        console.log('--- jwt --- validate ---');
         return {
             userId: payload.sub,
             username: payload.username,

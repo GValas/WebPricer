@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { UsersService } from '../users/users.service';
-import { ReadUserDto } from './read-user-dto';
+import { UsersService } from '../users/user.service';
 import { JwtService } from '@nestjs/jwt';
+import { UserLoginDto } from './user-login.dto';
 
 @Injectable()
 export class AuthService {
@@ -10,8 +10,8 @@ export class AuthService {
         private readonly usersService: UsersService,
         private readonly jwtService: JwtService) { }
 
-    async login(user: ReadUserDto) {
-        const foundUser = await this.usersService.findOne(user.email);
+    async login(user: UserLoginDto) {
+        const foundUser = await this.usersService.findByEmail(user.email);
         if (!foundUser || foundUser.password !== user.password) {
             throw new NotFoundException();
         }
@@ -32,7 +32,8 @@ export class AuthService {
     }
 
     async validateUser(username: string, password: string) {
-        const user = await this.usersService.findOne(username);
+        console.log('--- validateUser ---');
+        const user = await this.usersService.findByEmail(username);
         if (user && user.password === password) {
             const { password, ...result } = user;
             return result;

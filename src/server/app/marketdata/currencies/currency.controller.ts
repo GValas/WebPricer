@@ -1,11 +1,13 @@
-import { Controller, Get, Param, Body, UseInterceptors, Post, Delete, Put, UseFilters } from '@nestjs/common';
+import { Controller, Get, Param, Body, UseInterceptors, Post, Delete, Put, UseFilters, UseGuards } from '@nestjs/common';
 import { CurrencyService } from './currency.service';
 import { CurrencyCreateDto } from './currency-create.dto';
-import { Roles } from '../../utils/roles.decorator';
-import { UserRole } from '../../users/user-role.enum';
+import { Roles } from '../../utils/decorators/roles.decorator';
+import { UserRole } from '../../../../shared/enums/user-role.enum';
 import { CurrencyUpdateDto } from './currency-update.dto';
+import { AuthGuard } from '../../utils/auth.guard';
 
 @Controller('currencies')
+@UseGuards(AuthGuard)
 export class CurrencyController {
 
     constructor(private readonly currencyService: CurrencyService) { }
