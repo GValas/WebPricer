@@ -5,3 +5,7 @@ export function intersectArrays<T>(a: T[], b: T[]): T[] {
 export function isEmptyArray<T>(array: T[]): boolean {
     return typeof array === 'undefined' || array.length === 0;
 }
+
+export function isEmptyIntersection<T>(a: T[], b: T[]): boolean {
+    return isEmptyArray(intersectArrays(a, b));
+}

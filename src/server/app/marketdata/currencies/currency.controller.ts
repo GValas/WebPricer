@@ -5,7 +5,7 @@ import { Roles } from '../../utils/decorators/roles.decorator';
 import { UserRole } from '../../../../shared/enums/user-role.enum';
 import { CurrencyUpdateDto } from './currency-update.dto';
 import { AuthGuard } from '@nestjs/passport';
-import { RolesGuard } from '../../auth/roles.guard'
+import { RolesGuard } from '../../auth/roles.guard';
 
 @Controller('currencies')
 export class CurrencyController {
@@ -14,12 +14,13 @@ export class CurrencyController {
 
     @Get()
     @UseGuards(AuthGuard('jwt'), RolesGuard)
-    @Roles(UserRole.Admin)
+    @Roles(UserRole.User, UserRole.Admin)
     async findAll() {
         return await this.currencyService.findAll();
     }
 
     @Get(':code')
+    @Roles(UserRole.User, UserRole.Admin)
     async findOne(@Param('code') code: string) {
         return await this.currencyService.findByCode(code);
     }

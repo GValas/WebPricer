@@ -1,4 +1,4 @@
-export interface tokenPayload {
-    username: string;
-    createAt: string;
+export interface TokenPayload {
+    readonly username: string;
+    readonly createAt: string;
 }

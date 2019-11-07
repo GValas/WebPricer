@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { UsersService } from '../users/user.service';
 import { JwtService } from '@nestjs/jwt';
 import { UserLoginDto } from './user-login.dto';
-import { tokenPayload } from './interfaces/token-payload-interface';
+import { TokenPayload } from './interfaces/token-payload-interface';
 
 @Injectable()
 export class AuthService {
@@ -18,7 +18,7 @@ export class AuthService {
             throw new NotFoundException();
         }
 
-        const payload: tokenPayload = {
+        const payload: TokenPayload = {
             username: user.email,
             createAt: new Date().toISOString(),
         };
@@ -29,7 +29,6 @@ export class AuthService {
     }
 
     async validateUser(username: string, password: string) {
-        console.log('validateUser')
         const user = await this.usersService.findByEmail(username);
         if (user && user.password === password) {
             const { password, ...result } = user;
