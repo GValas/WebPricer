@@ -5,7 +5,7 @@ import { UserLoginDto } from '../auth/user-login.dto';
 export class UserCreateDto extends UserLoginDto {
 
     @IsDefined()
-    @IsEnum(UserRole)
-    readonly role: UserRole;
+    @IsEnum(UserRole, { each: true })
+    readonly roles: UserRole[];
 
 }

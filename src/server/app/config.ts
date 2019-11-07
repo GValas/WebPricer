@@ -5,6 +5,9 @@ export default {
         useUnifiedTopology: true,
         useFindAndModify: false,
     },
-    secretKey: 'toto',
+    jwtOptions: {
+        secretKey: 'toto',
+        tokenExpiry: '600s',
+    },
     port: 8080,
 };

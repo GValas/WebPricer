@@ -3,8 +3,8 @@ import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
 import { UsersModule } from '../users/user.module';
 import { PassportModule } from '@nestjs/passport';
-import { LocalStrategy } from './local.strategy';
-import { JwtStrategy } from './jwt.strategy';
+import { LocalStrategy } from './strategies/local.strategy';
+import { JwtStrategy } from './strategies/jwt.strategy';
 import { JwtModule } from '@nestjs/jwt';
 import config from '../config';
 
@@ -13,8 +13,8 @@ import config from '../config';
     UsersModule,
     PassportModule,
     JwtModule.register({
-      secret: config.secretKey,
-      signOptions: { expiresIn: '60s' },
+      secret: config.jwtOptions.secretKey,
+      signOptions: { expiresIn: config.jwtOptions.tokenExpiry },
     }),
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy],

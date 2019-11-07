@@ -4,15 +4,17 @@ import { CurrencyCreateDto } from './currency-create.dto';
 import { Roles } from '../../utils/decorators/roles.decorator';
 import { UserRole } from '../../../../shared/enums/user-role.enum';
 import { CurrencyUpdateDto } from './currency-update.dto';
-import { AuthGuard } from '../../utils/auth.guard';
+import { AuthGuard } from '@nestjs/passport';
+import { RolesGuard } from '../../auth/roles.guard'
 
 @Controller('currencies')
-@UseGuards(AuthGuard)
 export class CurrencyController {
 
     constructor(private readonly currencyService: CurrencyService) { }
 
     @Get()
+    @UseGuards(AuthGuard('jwt'), RolesGuard)
+    @Roles(UserRole.Admin)
     async findAll() {
         return await this.currencyService.findAll();
     }
@@ -23,21 +25,24 @@ export class CurrencyController {
     }
 
     @Post()
+    @UseGuards(AuthGuard('jwt'), RolesGuard)
     @Roles(UserRole.Admin)
     async create(@Body() currency: CurrencyCreateDto) {
         return await this.currencyService.create(currency);
     }
 
-    @Delete(':code')
-    @Roles(UserRole.Admin)
-    async delete(@Param('code') code: string) {
-        return await this.currencyService.deleteByCode(code);
-    }
-
     @Put(':code')
+    @UseGuards(AuthGuard('jwt'), RolesGuard)
     @Roles(UserRole.Admin)
     async update(@Param('code') code: string, @Body() currency: CurrencyUpdateDto) {
         return await this.currencyService.updateByCode(code, currency);
+    }
+
+    @Delete(':code')
+    @UseGuards(AuthGuard('jwt'), RolesGuard)
+    @Roles(UserRole.Admin)
+    async delete(@Param('code') code: string) {
+        return await this.currencyService.deleteByCode(code);
     }
 
 }
