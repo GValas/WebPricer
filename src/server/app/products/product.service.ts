@@ -37,9 +37,20 @@ export class ProductService {
 
   async insertOne(product: ProductCreateDto) {
     Logger.log(`insertOne product=${product}`);
-    const createdArticle = new this.productModel(product);
-    return await createdArticle
+    const createdProduct = new this.productModel(product);
+    return await createdProduct
       .save();
+  }
+
+  async insertMany(products: ProductCreateDto[]) {
+    Logger.log(`insertMany product=${products}`);
+    return await Promise.all(
+      products.map(async (product) => {
+        const createdProduct = new this.productModel(product);
+        return await createdProduct
+          .save();
+      }),
+    );
   }
 
   async updateById(id: string, product: ProductCreateDto) {
@@ -54,8 +65,8 @@ export class ProductService {
       .findByIdAndRemove(id);
   }
 
-  async generateProducts(size: number) {
-
+  async generateRandom(size: number) {
+    Logger.log(`generateProducts size=${size}`);
     const currencies = (await this.currencyService.findAll()).map(ccy => ccy.code);
     const underlyings = (await this.underlyingService.findAll()).map(udl => udl.code);
     const products: Product[] = [];
@@ -63,7 +74,7 @@ export class ProductService {
     [...Array(size)].forEach((_, i) => {
       const product: Product = {
         payoff: {
-          maturityDate: randomDate(new Date(2020, 0, 1), new Date(2018, 0, 1)),
+          maturityDate: randomDate(new Date(2022, 0, 1), new Date(2020, 0, 1)),
           strike: Math.round(randomNumber(10, 100)),
           vanillaType: randomEnum(VanillaType),
           exerciseMode: randomEnum(ExerciseMode),
@@ -72,7 +83,6 @@ export class ProductService {
         quantoCurrency: randomValue(currencies),
         underlying: randomValue(underlyings),
       };
-
       products.push(product);
     });
 

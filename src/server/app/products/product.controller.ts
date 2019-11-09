@@ -17,6 +17,14 @@ export class ProductController {
     return await this.productService.findAll();
   }
 
+  @Get('random/:nb')
+  @UseGuards(AuthGuard('jwt'), RolesGuard)
+  @Roles(UserRole.Admin)
+  async generateRandom(@Param('nb') nb: string) {
+    const size = nb ? Number(nb) : 10;
+    return await this.productService.generateRandom(size);
+  }
+
   @Get(':id')
   @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Roles(UserRole.User, UserRole.Admin)
@@ -27,8 +35,10 @@ export class ProductController {
   @Post()
   @UseGuards(AuthGuard('jwt'), RolesGuard)
   @Roles(UserRole.Admin)
-  async insertOne(@Body() product: ProductCreateDto) {
-    return await this.productService.insertOne(product);
+  async insert(@Body() product: ProductCreateDto | ProductCreateDto[]) {
+    return (product instanceof ProductCreateDto) ?
+      await this.productService.insertOne(product) :
+      await this.productService.insertMany(product);
   }
 
   @Put(':id')

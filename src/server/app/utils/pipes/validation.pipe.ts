@@ -1,7 +1,7 @@
 import { PipeTransform, Injectable, ArgumentMetadata, BadRequestException } from '@nestjs/common';
 import { validate } from 'class-validator';
 import { plainToClass } from 'class-transformer';
- 
+
 @Injectable()
 export class ValidationPipe implements PipeTransform<any> {
     async transform(value: any, { metatype }: ArgumentMetadata) {
@@ -16,7 +16,9 @@ export class ValidationPipe implements PipeTransform<any> {
         }
     }
 
+    // tslint:disable-next-line: ban-types
     private toValidate(metatype: Function): boolean {
+        // tslint:disable-next-line: ban-types
         const types: Function[] = [String, Boolean, Number, Array, Object];
         return !types.includes(metatype);
     }

@@ -6,8 +6,9 @@ export default {
         useFindAndModify: false,
     },
     jwtOptions: {
+        ignoreExpiration: true,
         secretKey: 'toto',
-        tokenExpiry: '600s',
+        tokenExpiry: '60s',
     },
     port: 3001,
 };
