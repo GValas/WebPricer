@@ -9,5 +9,5 @@ export default {
         secretKey: 'toto',
         tokenExpiry: '600s',
     },
-    port: 8080,
+    port: 3001,
 };

@@ -3,12 +3,12 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { UnderlyingService } from './underlying.service';
 import { UnderlyingController } from './underlying.controller';
 import { UnderlyingSchema } from './underlying.schema';
-import { UsersModule } from '../../users/user.module';
+import { UserModule } from '../../users/user.module';
 
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: 'Underlying', schema: UnderlyingSchema }]),
-    UsersModule,
+    UserModule,
   ],
   providers: [UnderlyingService],
   controllers: [UnderlyingController],

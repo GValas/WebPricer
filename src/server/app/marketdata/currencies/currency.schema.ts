@@ -8,6 +8,7 @@ export const CurrencySchema = new mongoose.Schema({
         uppercase: true,
         unique: true,
         required: true,
+        index: true,
     },
     rate: {
         type: Number,

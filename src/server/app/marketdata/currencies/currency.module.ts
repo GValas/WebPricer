@@ -3,13 +3,13 @@ import { CurrencyService } from './currency.service';
 import { CurrencyController } from './currency.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CurrencySchema } from './currency.schema';
-import { UsersModule } from '../../users/user.module';
+import { UserModule } from '../../users/user.module';
 import { AuthModule } from '../../auth/auth.module';
 
 @Module({
     imports: [
         MongooseModule.forFeature([{ name: 'Currency', schema: CurrencySchema }]),
-        UsersModule,
+        UserModule,
     ],
     providers: [CurrencyService],
     controllers: [CurrencyController],

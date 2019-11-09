@@ -5,6 +5,7 @@ export const UnderlyingSchema = new mongoose.Schema({
         type: String,
         uppercase: true,
         required: true,
+        index: true,
     },
     spot: {
         type: Number,

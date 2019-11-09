@@ -28,6 +28,7 @@
         "class-validator": "^0.10.2",
         "lowdb": "^1.0.0",
         "mongoose": "^5.7.7",
+        "nestjs-easyconfig": "^1.5.1",
         "passport": "^0.4.0",
         "passport-jwt": "^4.0.0",
         "passport-local": "^1.0.0",

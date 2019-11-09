@@ -8,9 +8,9 @@ import { ProductModule } from './products/product.module';
 import { UnderlyingModule } from './marketdata/underlyings/underlying.module';
 import { CurrencyModule } from './marketdata/currencies/currency.module';
 import { AuthModule } from './auth/auth.module';
-import { UsersModule } from './users/user.module';
+import { UserModule } from './users/user.module';
 import { MongooseModule } from '@nestjs/mongoose';
-import config from './config';
+import config from './config/config';
 import { MongoExceptionFilter } from './utils/filters/mongo-exception.filter';
 import { RequestMonitorInterceptor } from './utils/interceptors/request-monitor.interceptor';
 
@@ -21,7 +21,7 @@ import { RequestMonitorInterceptor } from './utils/interceptors/request-monitor.
     UnderlyingModule,
     CurrencyModule,
     AuthModule,
-    UsersModule,
+    UserModule,
     MongooseModule.forRoot(config.mongoUri, config.mongoOptions),
   ],
   controllers: [
