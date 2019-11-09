@@ -1,6 +1,5 @@
-import { Document } from 'mongoose';
 
-export interface Currency extends Document {
+export interface Currency {
   readonly code: string;
   readonly rate: number;
 }

@@ -1,15 +1,15 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Underlying } from '../../../../shared/interfaces/underlying.interface';
 import { UnderlyingCreateDto } from './underlying-create.dto';
 import { UnderlyingUpdateDto } from './underlying-update.dto';
+import { UnderlyingDocument } from './underlying-document.interface';
 const logger: Logger = new Logger('UnderlyingService');
 
 @Injectable()
 export class UnderlyingService {
 
-    constructor(@InjectModel('Underlying') private readonly underlyingModel: Model<Underlying>) { }
+    constructor(@InjectModel('Underlying') private readonly underlyingModel: Model<UnderlyingDocument>) { }
 
     async findAll() {
         logger.log('findAll');

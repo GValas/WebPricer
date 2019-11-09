@@ -1,7 +1,6 @@
 import { Currency } from './currency.interface';
-import { Document } from 'mongoose';
 
-export interface Underlying extends Document {
+export interface Underlying {
   readonly code: string;
   readonly spot: number;
   readonly volatility: number;

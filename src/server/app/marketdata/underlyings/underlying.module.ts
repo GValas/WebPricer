@@ -4,7 +4,6 @@ import { UnderlyingService } from './underlying.service';
 import { UnderlyingController } from './underlying.controller';
 import { UnderlyingSchema } from './underlying.schema';
 import { UsersModule } from '../../users/user.module';
-import { AuthModule } from '../../auth/auth.module';
 
 @Module({
   imports: [

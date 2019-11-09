@@ -1,8 +1,8 @@
 import { ValidateNested, IsEnum, IsUUID, IsOptional, IsNumber, IsString } from 'class-validator';
 import { Type } from 'class-transformer';
-import { VanillaPayoffDto } from './create-vanilla-payoff-dto';
+import { VanillaPayoffDto } from './vanilla-payoff-create.dto';
 
-export class CreateProductDto {
+export class ProductCreateDto {
 
   @IsNumber()
   readonly quantity: number;

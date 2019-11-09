@@ -1,15 +1,15 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { User } from '../../../shared/interfaces/user.interface';
 import { UserCreateDto } from './user-create.dto';
 import { UserUpdateDto } from './user-update.dto';
+import { UserDocument } from './user-document.interface';
 const logger: Logger = new Logger('CurrencyService');
 
 @Injectable()
 export class UsersService {
 
-    constructor(@InjectModel('User') private readonly userModel: Model<User>) { }
+    constructor(@InjectModel('User') private readonly userModel: Model<UserDocument>) { }
 
     async findAll() {
         logger.log('findAll');

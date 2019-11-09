@@ -15,4 +15,8 @@ export function randomDate(start: Date, end: Date): Date {
 
 export function randomNumber(start: number, end: number): number {
     return Math.random() * (end - start) + start;
-} 
+}
+
+export function randomValue<T>(array: T[]): T {
+    return array[Math.floor(Math.random() * array.length)];
+}
