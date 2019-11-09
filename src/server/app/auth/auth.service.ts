@@ -1,8 +1,11 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, Logger } from '@nestjs/common';
 import { UsersService } from '../users/user.service';
 import { JwtService } from '@nestjs/jwt';
 import { UserLoginDto } from './user-login.dto';
 import { TokenPayload } from './interfaces/token-payload-interface';
+import { compare } from 'bcrypt';
+
+const logger: Logger = new Logger('AuthService');
 
 @Injectable()
 export class AuthService {
@@ -13,8 +16,8 @@ export class AuthService {
 
     async login(user: UserLoginDto) {
 
-        const foundUser = await this.usersService.findByEmail(user.email);
-        if (!foundUser || foundUser.password !== user.password) {
+        logger.log(`Logging user ${JSON.stringify(user)}`);
+        if (!await this.validateUser(user.email, user.password)) {
             throw new NotFoundException();
         }
 
@@ -23,17 +26,15 @@ export class AuthService {
             createAt: new Date().toISOString(),
         };
 
+        logger.log(`User logged successfully, returning token ${JSON.stringify(payload)}`);
         return {
             access_token: this.jwtService.sign(payload),
         };
     }
 
     async validateUser(username: string, password: string) {
+        logger.log(`validateUser ${username} / ${password} `);
         const user = await this.usersService.findByEmail(username);
-        if (user && user.password === password) {
-            const { password, ...result } = user;
-            return result;
-        }
-        return null;
+        return user && await compare(password, user.password);
     }
 }

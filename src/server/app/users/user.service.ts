@@ -4,6 +4,8 @@ import { Model } from 'mongoose';
 import { UserCreateDto } from './user-create.dto';
 import { UserUpdateDto } from './user-update.dto';
 import { UserDocument } from './user-document.interface';
+import { hash } from 'bcrypt';
+import config from '../config/config';
 const logger: Logger = new Logger('CurrencyService');
 
 @Injectable()
@@ -25,17 +27,18 @@ export class UsersService {
             .exec();
     }
 
-    async create(currency: UserCreateDto) {
-        logger.log(`create currency=${JSON.stringify(currency)}`);
-        const createdCurrency = new this.userModel(currency);
-        return await createdCurrency
+    async create(user: UserCreateDto) {
+        logger.log(`create user=${JSON.stringify(user)}`);
+        user.password = await hash(user.password, config.salt);
+        const createdUser = new this.userModel(user);
+        return await createdUser
             .save();
     }
 
-    async updateByEmail(email: string, currency: UserUpdateDto) {
-        logger.log(`update, email=${email}, currency=${JSON.stringify(currency)}`);
+    async updateByEmail(email: string, user: UserUpdateDto) {
+        logger.log(`update, email=${email}, user=${JSON.stringify(user)}`);
         return await this.userModel
-            .updateOne({ email }, currency)
+            .updateOne({ email }, user)
             .exec();
     }
 

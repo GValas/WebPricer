@@ -1,6 +1,8 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Logger } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { UserLoginDto } from './user-login.dto';
+
+const logger: Logger = new Logger('AuthController');
 
 @Controller('auth')
 export class AuthController {
@@ -9,6 +11,7 @@ export class AuthController {
 
     @Post('login')
     async login(@Body() user: UserLoginDto) {
+        logger.log(`Logging user ${JSON.stringify(user)}`);
         return await this.authService.login(user);
     }
 

@@ -7,5 +7,5 @@ export class UserLoginDto {
     readonly email: string;
 
     @IsDefined()
-    readonly password: string;
+    password: string;
 }
