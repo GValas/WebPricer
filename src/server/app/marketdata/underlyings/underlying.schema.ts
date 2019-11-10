@@ -1,6 +1,6 @@
-import * as mongoose from 'mongoose';
+import { Schema } from 'mongoose';
 
-export const UnderlyingSchema = new mongoose.Schema({
+export const UnderlyingSchema = new Schema({
     code: {
         type: String,
         uppercase: true,

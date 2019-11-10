@@ -21,10 +21,11 @@ export class PriceController {
     @Get()
     async priceAll() {
         const products = await this.productService.findAll();
-        for (const product of products) {
-            product.quote = await this.priceService.priceOne(product);
-            await this.productService.updateById(product.id, product);
-        }
-        return products;
+        return await Promise.all(
+            products.map(async (product) => {
+                product.quote = await this.priceService.priceOne(product);
+                return await this.productService.updateById(product.id, product);
+            }),
+        );
     }
 }

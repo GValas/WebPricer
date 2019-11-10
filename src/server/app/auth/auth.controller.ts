@@ -12,7 +12,9 @@ export class AuthController {
     @Post('login')
     async login(@Body() user: UserLoginDto) {
         logger.log(`Logging user ${JSON.stringify(user)}`);
-        return await this.authService.login(user);
+        return {
+            jwtToken: await this.authService.validateByPassword(user.email, user.password),
+        };
     }
 
 }

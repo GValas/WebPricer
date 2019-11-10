@@ -1,6 +1,6 @@
-import * as mongoose from 'mongoose';
+import { Schema } from 'mongoose';
 
-export const CurrencySchema = new mongoose.Schema({
+export const CurrencySchema = new Schema({
     code: {
         type: String,
         min: 3,

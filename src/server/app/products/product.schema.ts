@@ -1,6 +1,6 @@
-import * as mongoose from 'mongoose';
+import { Schema } from 'mongoose';
 
-export const ProductSchema = new mongoose.Schema({
+export const ProductSchema = new Schema({
     quantity: Number,
     underlying: String,
     quantoCurrency: String,
@@ -11,6 +11,7 @@ export const ProductSchema = new mongoose.Schema({
         vanillaType: String,
     },
     quote: {
+        forward: Number,
         price: Number,
         delta: Number,
         gamma: Number,

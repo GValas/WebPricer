@@ -1,6 +1,9 @@
-import * as mongoose from 'mongoose';
+import { Schema } from 'mongoose';
+import * as bcrypt from 'bcrypt';
+import config from '../config/config';
+import { UserDocument } from './user-document.interface';
 
-export const UserSchema = new mongoose.Schema({
+export const UserSchema = new Schema({
     email: {
         type: String,
         unique: true,

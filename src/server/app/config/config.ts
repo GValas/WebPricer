@@ -8,7 +8,11 @@ export default {
     jwtOptions: {
         ignoreExpiration: true,
         secretKey: 'toto',
-        tokenExpiry: '60s',
+        tokenExpiry: 3600,  // 1h
+    },
+    passportOptions: {
+        defaultStrategy: 'jwt',
+        session: false,
     },
     salt: 10,
     port: 3001,

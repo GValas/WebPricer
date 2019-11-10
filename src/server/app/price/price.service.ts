@@ -10,7 +10,7 @@ export class PriceService {
 
     }
 
-    async priceOne(product: Product): Promise<Quote> {
+    async priceOne(product: Product) {
 
         await sleep(1);
 
@@ -20,13 +20,15 @@ export class PriceService {
         const dt = 1;
         const df = Math.exp(-rate * dt);
         const fwd = spot / df;
-
-        return {
+        const quote: Quote = {
+            forward: fwd,
             price: this.bs.callPrice(fwd, spot, df, vol, dt),
             delta: this.bs.callDelta(fwd, spot, df, vol, dt),
             gamma: this.bs.callGamma(fwd, spot, df, vol, dt),
             vega: this.bs.callVega(fwd, spot, df, vol, dt),
         };
+
+        return quote;
     }
 
 }
