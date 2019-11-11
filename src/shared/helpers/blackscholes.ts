@@ -75,6 +75,24 @@ export class BlackScholes {
         const f1 = this.dist.pdf(d1);
         return f1 / (forward * discountFactor / vt);
     }
+
+    * generatePath(spot: number, vol: number, rate: number, dt: number) {
+        let s = spot;
+        while (true) {
+            const e = this.normalRandom();
+            s *= Math.exp((rate - vol * vol / 2) * dt + vol * Math.sqrt(dt) * e);
+            yield s;
+        }
+    }
+
+    private normalRandom(): number {
+        let u = 0;
+        let v = 0;
+        while (u === 0) { u = Math.random(); }
+        while (v === 0) { v = Math.random(); }
+        return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
+    }
+
 }
 
 // function normalcdf(x: number, mean: number = 0, sigma: number = 1) {

@@ -3,6 +3,9 @@ import { AppModule } from './app.module';
 import config from './config/config';
 import * as fs from 'fs';
 import * as path from 'path';
+import * as helmet from 'helmet';
+import * as compression from 'compression';
+import * as rateLimit from 'express-rate-limit';
 
 async function bootstrap() {
 
@@ -15,7 +18,14 @@ async function bootstrap() {
     httpsOptions,
   });
 
-  app.enableCors();
+  app
+    .enableCors()
+    .use(helmet())
+    .use(compression())
+    .use(rateLimit({
+      windowMs: config.rateLimit.windowMs,
+      max: config.rateLimit.maxRequestPerMs,
+    }));
 
   await app.listen(config.port);
 }

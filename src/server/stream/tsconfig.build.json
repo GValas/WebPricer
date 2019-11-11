@@ -6,7 +6,7 @@
     "removeComments": true,
     "target": "es6",
     "sourceMap": true,
-    "outDir": "../../dist/api-2",
+    "outDir": "../../dist/stream",
     "baseUrl": "./",
   },
   "exclude": ["node_modules", "test", "**/*.spec.ts"]
