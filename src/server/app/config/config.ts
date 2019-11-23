@@ -18,6 +18,7 @@ export default {
         windowMs: 15 * 60 * 1000,   // 15 minutes
         maxRequestPerMs: 100,       // limit each IP to 100 requests per windowMs
     },
+    randomSeed: 41,
     salt: 10,
     port: 3001,
 };

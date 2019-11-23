@@ -1,34 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { Product } from '../../../shared/interfaces/product.interface';
-import { Quote } from '../../../shared/interfaces/quote.interface';
 import { BlackScholes } from '../../../shared/helpers/blackscholes';
 import { sleep } from '../../../shared/helpers/async';
+import { Quote } from '../../../shared/interfaces/quote.interface';
 
 @Injectable()
 export class PriceService {
-    constructor(private readonly bs: BlackScholes) {
+    constructor(private readonly bs: BlackScholes) { }
 
-    }
-
-    async priceOne(product: Product) {
-
+    async priceOne(product: Product): Promise<Quote> {
         await sleep(1);
-
-        const spot = 100;
-        const rate = 0.08;
-        const vol = 0.30;
-        const dt = 1;
-        const df = Math.exp(-rate * dt);
-        const fwd = spot / df;
-        const quote: Quote = {
-            forward: fwd,
-            price: this.bs.callPrice(fwd, spot, df, vol, dt),
-            delta: this.bs.callDelta(fwd, spot, df, vol, dt),
-            gamma: this.bs.callGamma(fwd, spot, df, vol, dt),
-            vega: this.bs.callVega(fwd, spot, df, vol, dt),
-        };
-
-        return quote;
+        return this.bs.priceCall({
+            spot: 100,
+            volatility: 0.3,
+            rate: 0.08,
+            strike: 100,
+            timeToMaturity: 1,
+        });
     }
 
 }
