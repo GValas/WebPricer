@@ -1,5 +1,5 @@
 import { Controller, Param, Get, UseGuards, Post, Put, Body, Delete } from '@nestjs/common';
-import { UnderlyingService } from './underlying.service';
+import { UnderlyingService } from '../../../shared/services/underlying.service';
 import { AuthGuard } from '@nestjs/passport';
 import { RolesGuard } from '../../auth/roles.guard';
 import { UserRole } from '../../../../shared/enums/user-role.enum';

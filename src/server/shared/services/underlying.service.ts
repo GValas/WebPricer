@@ -1,9 +1,9 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { UnderlyingCreateDto } from './underlying-create.dto';
-import { UnderlyingUpdateDto } from './underlying-update.dto';
-import { UnderlyingDocument } from './underlying-document.interface';
+import { UnderlyingCreateDto } from '../../app/marketdata/underlyings/underlying-create.dto';
+import { UnderlyingUpdateDto } from '../../app/marketdata/underlyings/underlying-update.dto';
+import { UnderlyingDocument } from '../../app/marketdata/underlyings/underlying-document.interface';
 const logger: Logger = new Logger('UnderlyingService');
 
 @Injectable()

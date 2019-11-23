@@ -1,8 +1,43 @@
 import { Gaussian } from 'ts-gaussian';
 import { Injectable } from '@nestjs/common';
 
+export interface BlackScholesRequest {
+    spot: number;
+    strike: number;
+    volatility: number;
+    rate: number;
+    timeToMaturity: number;
+}
+
+export interface BlackScholesQuote {
+    forward: number;
+    price: number;
+    delta: number;
+    gamma: number;
+    vega: number;
+}
+
 @Injectable()
 export class BlackScholes {
+
+    private dist = new Gaussian(0, 1);
+
+    call(bsRequest: BlackScholesRequest): BlackScholesQuote {
+
+        const k = bsRequest.strike;
+        const dt = bsRequest.timeToMaturity;
+        const v = bsRequest.volatility;
+        const df = Math.exp(- bsRequest.rate * bsRequest.timeToMaturity);
+        const fwd = bsRequest.spot / df;
+
+        return {
+            forward: fwd,
+            price: this.callPrice(fwd, k, df, v, dt),
+            delta: this.callDelta(fwd, k, df, v, dt),
+            gamma: this.callGamma(fwd, k, df, v, dt),
+            vega: this.callVega(fwd, k, df, v, dt),
+        }
+    }
 
     callVega(
         forward: number,
@@ -17,8 +52,6 @@ export class BlackScholes {
         const f1 = this.dist.pdf(d1);
         return f1 * forward * discountFactor * sdt;
     }
-
-    private dist = new Gaussian(0, 1);
 
     callPrice(
         forward: number,
@@ -45,8 +78,8 @@ export class BlackScholes {
         const vt = volatility * Math.sqrt(timeToMaturity);
         const d1 = Math.log(forward / strike) / vt + vt / 2;
         const d2 = d1 - vt;
-        const nd1 = this.dist.cdf(d1);
-        const nd2 = this.dist.cdf(d2);
+        const nd1 = this.dist.cdf(-d1);
+        const nd2 = this.dist.cdf(-d2);
         return discountFactor * (strike * nd2 - forward * nd1);
     }
 
@@ -93,17 +126,4 @@ export class BlackScholes {
         return Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
     }
 
-}
-
-// function normalcdf(x: number, mean: number = 0, sigma: number = 1) {
-//     const z = (x - mean) / Math.sqrt(2 * sigma * sigma);
-//     const t = 1 / (1 + 0.3275911 * Math.abs(z));
-//     const a1 = 0.254829592;
-//     const a2 = -0.284496736;
-//     const a3 = 1.421413741;
-//     const a4 = -1.453152027;
-//     const a5 = 1.061405429;
-//     const erf = 1 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-z * z);
-//     const sign = z < 0 ? -1 : 1;
-//     return (1 / 2) * (1 + sign * erf);
-// }
+} 

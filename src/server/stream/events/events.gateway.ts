@@ -7,17 +7,24 @@ import { interval } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Server, Client } from 'ws';
 import { BlackScholes } from '../../../shared/helpers/blackscholes';
+import { UnderlyingService } from '../../shared/services/underlying.service';
 
 @WebSocketGateway(8080)
 export class EventsGateway {
 
-  constructor(private readonly bs: BlackScholes) { }
+  constructor(
+    private readonly bs: BlackScholes,
+    private readonly underlyingService: UnderlyingService) { }
 
   @WebSocketServer()
   server: Server;
 
   @SubscribeMessage('events')
-  onEvent(client: Client, data: any) {
+  async onEvent(client: Client, data: any) {
+
+
+    const udl = (await this.underlyingService.findAll());
+    console.log(udl);
 
     const mat = 1;
     const spot = 100;

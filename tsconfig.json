@@ -9,7 +9,10 @@
     "target": "es2017",
     "sourceMap": true,
     "baseUrl": "./",
-    "incremental": true
+    "incremental": true,
+    "jsx": "react",
   },
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules"
+  ]
 }

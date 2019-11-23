@@ -7,7 +7,7 @@ import { randomDate, randomNumber, randomEnum, randomValue } from '../../../shar
 import { VanillaType } from '../../../shared/enums/vanilla-type.enum';
 import { ExerciseMode } from '../../../shared/enums/exercise-mode.enum';
 import { CurrencyService } from '../marketdata/currencies/currency.service';
-import { UnderlyingService } from '../marketdata/underlyings/underlying.service';
+import { UnderlyingService } from '../../shared/services/underlying.service';
 import { ProductDocument } from './product-document.interface';
 
 const logger: Logger = new Logger('ProductService');
