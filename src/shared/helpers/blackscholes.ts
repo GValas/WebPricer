@@ -1,6 +1,5 @@
 import { Gaussian } from 'ts-gaussian';
 import { Injectable } from '@nestjs/common';
-import { normal } from 'random';
 import { Quote } from '../interfaces/quote.interface';
 import config from '../../server/app/config/config';
 import { BlackScholesRequest } from '../interfaces/black-scholes-request.interface';
@@ -45,7 +44,7 @@ export class BlackScholes {
         const seedrandom = require('seedrandom');
         random.use(seedrandom(config.randomSeed));
 
-        const norm = normal(0, 1);
+        const norm = random.normal(0, 1);
         let s = spot;
 
         while (true) {

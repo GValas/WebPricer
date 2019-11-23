@@ -1,5 +1,5 @@
 import { BlackScholes } from './blackscholes';
-import { BlackScholesRequest } from "../interfaces/black-scholes-request.interface";
+import { BlackScholesRequest } from '../interfaces/black-scholes-request.interface';
 import { Quote } from '../interfaces/quote.interface';
 
 describe('BlackScholes toolkit', () => {

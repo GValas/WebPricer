@@ -3,7 +3,7 @@ import { Product } from '../../../shared/interfaces/product.interface';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { ProductCreateDto } from './product-create.dto';
-import { randomDate, randomNumber, randomEnum, randomValue } from '../../../shared/helpers/random';
+import { randomDate, randomNumber, randomEnum, randomValue } from '../../../shared/helpers/random-generators';
 import { VanillaType } from '../../../shared/enums/vanilla-type.enum';
 import { ExerciseMode } from '../../../shared/enums/exercise-mode.enum';
 import { CurrencyService } from '../marketdata/currencies/currency.service';
