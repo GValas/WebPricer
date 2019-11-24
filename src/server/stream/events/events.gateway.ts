@@ -27,27 +27,32 @@ export class EventsGateway {
     console.log(udl);
 
     const mat = 1;
-    const spot = 100;
+    let spot = 100;
+    const strike = spot;
     const rate = 0.08;
-    const vol = 0.3;
+    const volatility = 0.3;
     const dt = mat / 365.0;
-    const spotGen = this.bs.generatePath(spot, vol, rate, dt);
+    const spotGen = this.bs.generatePath(spot, volatility, rate, dt);
 
     return interval(10)
       .pipe(
         map(i => {
 
-          const nextSpot = spotGen.next().value as number;
+          spot = spotGen.next().value as number;
           const timeToMaturity = mat - i * dt;
-          const df = Math.exp(-rate * timeToMaturity);
-          const fwd = nextSpot / df;
-          const call = this.bs.callPrice(fwd, spot, df, vol, timeToMaturity);
+          const call = this.bs.priceCall({
+            spot,
+            rate,
+            timeToMaturity,
+            strike,
+            volatility,
+          });
 
           return {
             step: i,
-            spot: nextSpot,
-            fwd,
-            call,
+            spot,
+            forward: call.forward,
+            price: call.price,
           };
         }),
       );

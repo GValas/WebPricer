@@ -13,7 +13,7 @@ export class UsersService {
 
     constructor(@InjectModel('User') private readonly userModel: Model<UserDocument>) { }
 
-    async findAll() {
+    async findAll(): Promise<UserDocument[]> {
         logger.log('findAll');
         return await this.userModel
             .find()

@@ -13,7 +13,8 @@
         "server:app:start:debug": "nodemon --config ./src/server/app/nodemon-debug.json",
         "server:app:start:prod": "node dist/server/app/main.js",
         "test": "jest",
-        "test:watch": "jest --watch"
+        "test:watch": "jest --watch",
+        "test:coverage": "jest --coverage"
     },
     "dependencies": {
         "@hapi/joi": "^16.1.7",
@@ -35,7 +36,6 @@
         "compression": "^1.7.4",
         "express-rate-limit": "^5.0.0",
         "helmet": "^3.21.2",
-        "lowdb": "^1.0.0",
         "mongoose": "^5.7.7",
         "nestjs-easyconfig": "^1.5.1",
         "passport": "^0.4.0",

@@ -4,4 +4,6 @@ export interface Quote {
   readonly delta?: number;
   readonly gamma?: number;
   readonly vega?: number;
+  readonly theta?: number;
+  readonly rho?: number;
 }
