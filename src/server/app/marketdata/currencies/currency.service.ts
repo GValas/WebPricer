@@ -26,11 +26,22 @@ export class CurrencyService {
             .exec();
     }
 
-    async create(currency: CurrencyCreateDto) {
+    async createOne(currency: CurrencyCreateDto) {
         logger.log(`create currency=${JSON.stringify(currency)}`);
         const createdCurrency = new this.currencyModel(currency);
         return await createdCurrency
             .save();
+    }
+
+    async createMany(currencies: CurrencyCreateDto[]) {
+        Logger.log(`insertMany currency=${currencies}`);
+        return await Promise.all(
+            currencies.map(async (currency) => {
+                const createdCurrency = new this.currencyModel(currency);
+                return await createdCurrency
+                    .save();
+            }),
+        );
     }
 
     async updateByCode(code: string, currency: CurrencyUpdateDto) {
@@ -45,5 +56,13 @@ export class CurrencyService {
             .deleteOne({ code })
             .exec();
     }
+
+    async deleteAll() {
+        return await this.currencyModel
+            .deleteMany({})
+            .exec();
+    }
+
+
 
 }

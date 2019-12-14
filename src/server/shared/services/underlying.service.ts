@@ -25,11 +25,22 @@ export class UnderlyingService {
             .exec();
     }
 
-    async create(underlying: UnderlyingCreateDto) {
+    async createOne(underlying: UnderlyingCreateDto) {
         logger.log(`create underlying=${JSON.stringify(underlying)}`);
         const createdUnderlying = new this.underlyingModel(underlying);
         return await createdUnderlying
             .save();
+    }
+
+    async createMany(underlyings: UnderlyingCreateDto[]) {
+        Logger.log(`insertMany underlying=${underlyings}`);
+        return await Promise.all(
+            underlyings.map(async (underlying) => {
+                const createdUnderlying = new this.underlyingModel(underlying);
+                return await createdUnderlying
+                    .save();
+            }),
+        );
     }
 
     async updateByCode(code: string, underlying: UnderlyingUpdateDto) {
@@ -42,6 +53,12 @@ export class UnderlyingService {
     async deleteByCode(code: string) {
         return await this.underlyingModel
             .deleteOne({ code })
+            .exec();
+    }
+
+    async deleteAll() {
+        return await this.underlyingModel
+            .deleteMany({})
             .exec();
     }
 

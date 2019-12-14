@@ -30,8 +30,8 @@ export class UnderlyingController {
   @Post()
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.Admin)
-  async create(@Body() underlying: UnderlyingCreateDto) {
-    return await this.underlyingService.create(underlying);
+  async createOne(@Body() underlying: UnderlyingCreateDto) {
+    return await this.underlyingService.createOne(underlying);
   }
 
   @Put(':code')

@@ -9,41 +9,33 @@ import { RolesGuard } from '../auth/roles.guard';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 
 @Controller('users')
+@UseGuards(JwtAuthGuard, RolesGuard)
 export class UserController {
 
     constructor(private readonly userService: UsersService) { }
 
     @Get()
-    @UseGuards(JwtAuthGuard, RolesGuard)
-    @Roles(UserRole.Admin)
     async findAll() {
         return await this.userService.findAll();
     }
 
     @Get(':email')
-    @UseGuards(JwtAuthGuard, RolesGuard)
-    @Roles(UserRole.Admin)
     async findByEmail(@Param('email') email: string) {
         return await this.userService.findByEmail(email);
     }
 
     @Post()
-    @UseGuards(JwtAuthGuard, RolesGuard)
     @Roles(UserRole.Admin)
-    async create(@Body() user: UserCreateDto) {
-        return await this.userService.create(user);
+    async createOne(@Body() user: UserCreateDto) {
+        return await this.userService.createOne(user);
     }
 
     @Delete(':email')
-    @UseGuards(JwtAuthGuard, RolesGuard)
-    @Roles(UserRole.Admin)
     async delete(@Param('email') email: string) {
         return await this.userService.deleteByEmail(email);
     }
 
     @Put(':email')
-    @UseGuards(JwtAuthGuard, RolesGuard)
-    @Roles(UserRole.Admin)
     async update(@Param('email') email: string, @Body() user: UserUpdateDto) {
         return await this.userService.updateByEmail(email, user);
     }

@@ -6,14 +6,14 @@ import {
 import { interval } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Server, Client } from 'ws';
-import { BlackScholes } from '../../../shared/helpers/blackscholes';
 import { UnderlyingService } from '../../shared/services/underlying.service';
+import { stockDiffusion, priceVanilla } from '../../../shared/helpers/blackscholes';
+import { VanillaType } from '../../../shared/enums/vanilla-type.enum';
 
 @WebSocketGateway(8080)
 export class EventsGateway {
 
   constructor(
-    private readonly bs: BlackScholes,
     private readonly underlyingService: UnderlyingService) { }
 
   @WebSocketServer()
@@ -21,7 +21,6 @@ export class EventsGateway {
 
   @SubscribeMessage('events')
   async onEvent(client: Client, data: any) {
-
 
     const udl = (await this.underlyingService.findAll());
     console.log(udl);
@@ -32,7 +31,7 @@ export class EventsGateway {
     const rate = 0.08;
     const volatility = 0.3;
     const dt = mat / 365.0;
-    const spotGen = this.bs.generatePath(spot, volatility, rate, dt);
+    const spotGen = stockDiffusion(spot, volatility, rate, dt);
 
     return interval(10)
       .pipe(
@@ -40,7 +39,8 @@ export class EventsGateway {
 
           spot = spotGen.next().value as number;
           const timeToMaturity = mat - i * dt;
-          const call = this.bs.priceCall({
+          const call = priceVanilla({
+            vanillaType: VanillaType.Call,
             spot,
             rate,
             timeToMaturity,

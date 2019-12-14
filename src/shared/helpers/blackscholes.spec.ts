@@ -1,5 +1,4 @@
 import { priceVanilla, stockDiffusion } from './blackscholes';
-import { BlackScholesRequest } from '../interfaces/black-scholes-request.interface';
 import { Quote } from '../interfaces/quote.interface';
 import { VanillaType } from '../enums/vanilla-type.enum';
 
@@ -26,7 +25,7 @@ describe('BlackScholes toolkit', () => {
             rate,
             strike: spot,
             timeToMaturity,
-        })).toStrictEqual({
+        })).toStrictEqual<Quote>({
             forward: 108.32870676749586,
             price: 15.711311897523917,
             delta: 0.6615388914695212,
@@ -43,7 +42,7 @@ describe('BlackScholes toolkit', () => {
             rate,
             strike: spot,
             timeToMaturity,
-        })).toStrictEqual({
+        })).toStrictEqual<Quote>({
             forward: 108.32870676749586,
             price: 8.022946536187497,
             delta: -0.33846110853047884,

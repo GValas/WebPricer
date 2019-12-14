@@ -31,18 +31,18 @@ export class ProductService {
   async findById(id: string) {
     Logger.log(`findById id=${id}`);
     return await this.productModel
-      .findById({ id })
+      .findById(id)
       .exec();
   }
 
-  async insertOne(product: ProductCreateDto) {
+  async createOne(product: ProductCreateDto) {
     Logger.log(`insertOne product=${product}`);
     const createdProduct = new this.productModel(product);
     return await createdProduct
       .save();
   }
 
-  async insertMany(products: ProductCreateDto[]) {
+  async createMany(products: ProductCreateDto[]) {
     Logger.log(`insertMany product=${products}`);
     return await Promise.all(
       products.map(async (product) => {
@@ -63,6 +63,12 @@ export class ProductService {
     Logger.log(`deleteById id=${id}`);
     return await this.productModel
       .findByIdAndRemove(id);
+  }
+
+  async deleteAll() {
+    return await this.productModel
+      .deleteMany({})
+      .exec();
   }
 
   async generateRandom(size: number) {

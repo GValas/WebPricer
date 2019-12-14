@@ -1,10 +1,10 @@
 import { Gaussian } from 'ts-gaussian';
 import { Quote } from '../interfaces/quote.interface';
 import config from '../../server/app/config/config';
-import { BlackScholesRequest } from '../interfaces/black-scholes-request.interface';
+import { BlackScholesDescription } from '../interfaces/black-scholes-request.interface';
 import { VanillaType } from '../enums/vanilla-type.enum';
 
-export function priceVanilla(bsRequest: BlackScholesRequest): Quote {
+export function priceVanilla(bsRequest: BlackScholesDescription): Quote {
 
     const dist = new Gaussian(0, 1);
 

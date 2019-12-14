@@ -14,5 +14,4 @@ describe('Async toolkit', () => {
 
     });
 
-
 });

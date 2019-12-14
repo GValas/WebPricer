@@ -1,16 +1,17 @@
 import { Injectable } from '@nestjs/common';
 import { Product } from '../../../shared/interfaces/product.interface';
-import { BlackScholes } from '../../../shared/helpers/blackscholes';
 import { sleep } from '../../../shared/helpers/async';
 import { Quote } from '../../../shared/interfaces/quote.interface';
+import { priceVanilla } from '../../../shared/helpers/blackscholes';
+import { VanillaType } from '../../../shared/enums/vanilla-type.enum';
 
 @Injectable()
 export class PriceService {
-    constructor(private readonly bs: BlackScholes) { }
 
     async priceOne(product: Product): Promise<Quote> {
         await sleep(1);
-        return this.bs.priceCall({
+        return priceVanilla({
+            vanillaType: VanillaType.Call,
             spot: 100,
             volatility: 0.3,
             rate: 0.08,

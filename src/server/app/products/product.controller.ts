@@ -36,10 +36,10 @@ export class ProductController {
   @Post()
   @UseGuards(JwtAuthGuard, RolesGuard)
   @Roles(UserRole.Admin)
-  async insert(@Body() product: ProductCreateDto | ProductCreateDto[]) {
+  async createOne(@Body() product: ProductCreateDto | ProductCreateDto[]) {
     return (product instanceof ProductCreateDto) ?
-      await this.productService.insertOne(product) :
-      await this.productService.insertMany(product);
+      await this.productService.createOne(product) :
+      await this.productService.createMany(product);
   }
 
   @Put(':id')

@@ -20,14 +20,14 @@ export class UsersService {
             .exec();
     }
 
-    async findByEmail(email: string) {
+    async findByEmail(email: string): Promise<UserDocument> {
         logger.log(`findByEmail id=${email}`);
         return await this.userModel
             .findOne({ email })
             .exec();
     }
 
-    async create(user: UserCreateDto) {
+    async createOne(user: UserCreateDto): Promise<UserDocument> {
         logger.log(`create user=${JSON.stringify(user)}`);
         user.password = await hash(user.password, config.salt);
         const createdUser = new this.userModel(user);
@@ -35,7 +35,7 @@ export class UsersService {
             .save();
     }
 
-    async updateByEmail(email: string, user: UserUpdateDto) {
+    async updateByEmail(email: string, user: UserUpdateDto): Promise<UserDocument> {
         logger.log(`update, email=${email}, user=${JSON.stringify(user)}`);
         return await this.userModel
             .updateOne({ email }, user)
