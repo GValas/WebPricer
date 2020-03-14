@@ -1,4 +1,3 @@
-import { Document } from 'mongoose'
-import { User } from '../../../shared/interfaces/user.interface'
-export interface UserDocument extends User, Document {
-}
+import { Document } from 'mongoose';
+import { IUser } from '../../../shared/interfaces/user.interface';
+export interface IUserDocument extends IUser, Document {}

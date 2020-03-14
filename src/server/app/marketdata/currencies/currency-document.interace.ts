@@ -1,4 +1,3 @@
-import { Document } from 'mongoose'
-import { Currency } from '../../../../shared/interfaces/currency.interface'
-export interface CurrencyDocument extends Currency, Document {
-}
+import { Document } from 'mongoose';
+import { ICurrency } from '../../../../shared/interfaces/currency.interface';
+export interface ICurrencyDocument extends ICurrency, Document {}

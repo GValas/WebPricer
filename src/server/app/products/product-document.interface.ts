@@ -1,4 +1,3 @@
-import { Document } from 'mongoose'
-import { Product } from '../../../shared/interfaces/product.interface'
-export interface ProductDocument extends Product, Document {
-}
+import { Document } from 'mongoose';
+import { IProduct } from '../../../shared/interfaces/product.interface';
+export interface IProductDocument extends IProduct, Document {}
