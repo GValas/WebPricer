@@ -1,7 +1,7 @@
-import * as bcrypt from 'bcrypt';
-import { Schema } from 'mongoose';
-import config from '../config/config';
-import { IUserDocument } from './user-document.interface';
+import * as bcrypt from 'bcrypt'
+import { Schema } from 'mongoose'
+import config from '../config/config'
+import { IUserDocument } from './user-document.interface'
 
 export const UserSchema = new Schema({
     email: {
@@ -18,4 +18,4 @@ export const UserSchema = new Schema({
         type: [String],
         required: true
     }
-});
+})

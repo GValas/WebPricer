@@ -1,4 +1,4 @@
 export interface ITokenPayload {
-    readonly email: string;
-    readonly createAt: string;
+    readonly email: string
+    readonly createAt: string
 }
