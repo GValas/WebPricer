@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import { Schema } from 'mongoose'
 
 export const UnderlyingSchema = new Schema({
     code: {
@@ -22,4 +22,4 @@ export const UnderlyingSchema = new Schema({
         uppercase: true,
         required: true,
     },
-});
+})

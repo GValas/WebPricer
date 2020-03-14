@@ -21,4 +21,4 @@ export default {
     randomSeed: 41,
     salt: 10,
     port: 3001,
-};
+}

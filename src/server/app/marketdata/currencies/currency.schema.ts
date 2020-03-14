@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import { Schema } from 'mongoose'
 
 export const CurrencySchema = new Schema({
     code: {
@@ -14,4 +14,4 @@ export const CurrencySchema = new Schema({
         type: Number,
         required: true,
     },
-});
+})

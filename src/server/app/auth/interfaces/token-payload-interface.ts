@@ -1,4 +1,4 @@
 export interface TokenPayload {
-    readonly email: string;
-    readonly createAt: string;
+    readonly email: string
+    readonly createAt: string
 }

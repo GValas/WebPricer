@@ -1,8 +1,8 @@
-import { Module } from '@nestjs/common';
-import { MongooseModule } from '@nestjs/mongoose';
-import { UnderlyingService } from '../../../shared/services/underlying.service';
-import { UnderlyingController } from './underlying.controller';
-import { UnderlyingSchema } from './underlying.schema';
+import { Module } from '@nestjs/common'
+import { MongooseModule } from '@nestjs/mongoose'
+import { UnderlyingService } from '../../../shared/services/underlying.service'
+import { UnderlyingController } from './underlying.controller'
+import { UnderlyingSchema } from './underlying.schema'
 
 @Module({
   imports: [

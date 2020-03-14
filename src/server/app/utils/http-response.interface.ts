@@ -3,6 +3,6 @@ export interface httpResponse {
         startDate: Date;
         endDate: Date;
         durationInMs: number;
-    };
-    reponse: any;
+    }
+    reponse: any
 }

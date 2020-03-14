@@ -1,8 +1,8 @@
-import { Module } from '@nestjs/common';
-import { EventsGateway } from './events.gateway';
-import { UnderlyingService } from '../../shared/services/underlying.service';
-import { MongooseModule } from '@nestjs/mongoose';
-import { UnderlyingSchema } from '../../app/marketdata/underlyings/underlying.schema';
+import { Module } from '@nestjs/common'
+import { MongooseModule } from '@nestjs/mongoose'
+import { UnderlyingSchema } from '../../app/marketdata/underlyings/underlying.schema'
+import { UnderlyingService } from '../../shared/services/underlying.service'
+import { EventsGateway } from './events.gateway'
 
 @Module({
     imports: [

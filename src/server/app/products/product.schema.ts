@@ -1,4 +1,4 @@
-import { Schema } from 'mongoose';
+import { Schema } from 'mongoose'
 
 export const ProductSchema = new Schema({
     quantity: Number,
@@ -17,4 +17,4 @@ export const ProductSchema = new Schema({
         gamma: Number,
         vega: Number,
     },
-});
+})

@@ -1,10 +1,10 @@
-import { CallHandler, ExecutionContext, Injectable, NestInterceptor, Logger } from '@nestjs/common';
-import { Observable } from 'rxjs';
-import { tap, map } from 'rxjs/operators';
-import * as uuid from 'uuid';
-import { httpResponse } from '../http-response.interface';
+import { CallHandler, ExecutionContext, Injectable, Logger, NestInterceptor } from '@nestjs/common'
+import { Observable } from 'rxjs'
+import { map, tap } from 'rxjs/operators'
+import * as uuid from 'uuid'
+import { httpResponse } from '../http-response.interface'
 
-const logger: Logger = new Logger('RequestMonitorInterceptor');
+const logger: Logger = new Logger('RequestMonitorInterceptor')
 
 @Injectable()
 export class RequestMonitorInterceptor implements NestInterceptor {
@@ -14,11 +14,11 @@ export class RequestMonitorInterceptor implements NestInterceptor {
     // const req = context.switchToHttp().getRequest();
     // const res = context.switchToHttp().getResponse();
 
-    const startDate = new Date();
+    const startDate = new Date()
     return next.handle()
       .pipe(
         map(value => {
-          const endDate = new Date();
+          const endDate = new Date()
           const resp: httpResponse = {
             request: {
               startDate,
@@ -26,10 +26,10 @@ export class RequestMonitorInterceptor implements NestInterceptor {
               durationInMs: (endDate.getTime() - startDate.getTime()),
             },
             reponse: value,
-          };
-          logger.log(JSON.stringify(resp));
-          return resp;
+          }
+          logger.log(JSON.stringify(resp))
+          return resp
         }),
-      );
+      )
   }
 }

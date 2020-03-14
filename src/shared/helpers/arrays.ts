@@ -1,11 +1,11 @@
 export function intersectArrays<T>(a: T[], b: T[]): T[] {
-    return a.filter(value => b.includes(value));
+    return a.filter(value => b.includes(value))
 }
 
 export function isEmptyArray<T>(array: T[]): boolean {
-    return typeof array === 'undefined' || array.length === 0;
+    return typeof array === 'undefined' || array.length === 0
 }
 
 export function isEmptyIntersection<T>(a: T[], b: T[]): boolean {
-    return isEmptyArray(intersectArrays(a, b));
+    return isEmptyArray(intersectArrays(a, b))
 }

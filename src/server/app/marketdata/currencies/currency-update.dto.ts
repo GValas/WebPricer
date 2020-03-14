@@ -1,3 +1,3 @@
-import { CurrencyCreateDto } from './currency-create.dto';
+import { CurrencyCreateDto } from './currency-create.dto'
 export class CurrencyUpdateDto extends CurrencyCreateDto {
 }

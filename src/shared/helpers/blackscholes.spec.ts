@@ -1,20 +1,20 @@
-import { priceVanilla, stockDiffusion } from './blackscholes';
-import { Quote } from '../interfaces/quote.interface';
-import { VanillaType } from '../enums/vanilla-type.enum';
+import { VanillaType } from '../enums/vanilla-type.enum'
+import { Quote } from '../interfaces/quote.interface'
+import { priceVanilla, stockDiffusion } from './blackscholes'
 
 describe('BlackScholes toolkit', () => {
 
-    let spot: number;
-    let volatility: number;
-    let rate: number;
-    let timeToMaturity: number;
+    let spot: number
+    let volatility: number
+    let rate: number
+    let timeToMaturity: number
 
     beforeAll(() => {
-        spot = 100;
-        volatility = 0.3;
-        rate = 0.08;
-        timeToMaturity = 1;
-    });
+        spot = 100
+        volatility = 0.3
+        rate = 0.08
+        timeToMaturity = 1
+    })
 
     it('priceVanilla', () => {
 
@@ -33,7 +33,7 @@ describe('BlackScholes toolkit', () => {
             vega: 36.57723664140024,
             theta: -9.521991676164292,
             rho: 50.4425772494282,
-        });
+        })
 
         expect(priceVanilla({
             vanillaType: VanillaType.Put,
@@ -50,14 +50,14 @@ describe('BlackScholes toolkit', () => {
             vega: 36.57723664140024,
             theta: 2.1370609050712055,
             rho: -41.86905738923538,
-        });
+        })
 
-    });
+    })
 
     it('stockDiffusion', () => {
-        const gen = stockDiffusion(spot, volatility, rate, timeToMaturity / 10);
-        expect(gen.next().value).toBe(88.68928822607359);
-        expect(gen.next().value).toBe(89.4094027295264);
-    });
+        const gen = stockDiffusion(spot, volatility, rate, timeToMaturity / 10)
+        expect(gen.next().value).toBe(88.68928822607359)
+        expect(gen.next().value).toBe(89.4094027295264)
+    })
 
-});
+})

@@ -1,20 +1,20 @@
-import { ValidateNested, IsEnum, IsUUID, IsOptional, IsNumber, IsString } from 'class-validator';
-import { Type } from 'class-transformer';
-import { VanillaPayoffDto } from './vanilla-payoff-create.dto';
+import { Type } from 'class-transformer'
+import { IsEnum, IsNumber, IsOptional, IsString, IsUUID, ValidateNested } from 'class-validator'
+import { VanillaPayoffDto } from './vanilla-payoff-create.dto'
 
 export class ProductCreateDto {
 
   @IsNumber()
-  readonly quantity: number;
+  readonly quantity: number
 
   @IsString()
-  readonly underlying: string;
+  readonly underlying: string
 
   @IsString()
-  readonly quantoCurrency: string;
+  readonly quantoCurrency: string
 
   @ValidateNested()
   @Type(() => VanillaPayoffDto)
-  readonly payoff: VanillaPayoffDto;
+  readonly payoff: VanillaPayoffDto
 
 }

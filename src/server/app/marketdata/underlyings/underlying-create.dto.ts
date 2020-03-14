@@ -1,19 +1,19 @@
-import { IsNumber, Length, IsDefined, IsString } from 'class-validator';
+import { IsDefined, IsNumber, IsString, Length } from 'class-validator'
 
 export class UnderlyingCreateDto {
 
     @IsDefined()
-    readonly code: string;
+    readonly code: string
 
     @IsDefined()
     @IsNumber()
-    readonly spot: number;
+    readonly spot: number
 
     @IsDefined()
     @IsNumber()
-    readonly volatility: number;
+    readonly volatility: number
 
     @IsDefined()
     @IsString()
-    readonly currency: string;
+    readonly currency: string
 }

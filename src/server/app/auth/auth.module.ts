@@ -1,9 +1,9 @@
-import { Module, Global } from '@nestjs/common';
-import { AuthService } from './auth.service';
-import { AuthController } from './auth.controller';
-import { JwtStrategy } from './strategies/jwt.strategy';
-import { JwtModule } from '@nestjs/jwt';
-import config from '../config/config';
+import { Global, Module } from '@nestjs/common'
+import { JwtModule } from '@nestjs/jwt'
+import config from '../config/config'
+import { AuthController } from './auth.controller'
+import { AuthService } from './auth.service'
+import { JwtStrategy } from './strategies/jwt.strategy'
 
 @Module({
   imports: [

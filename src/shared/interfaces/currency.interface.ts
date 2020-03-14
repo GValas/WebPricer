@@ -1,5 +1,5 @@
 
 export interface Currency {
-  readonly code: string;
-  readonly rate: number;
+  readonly code: string
+  readonly rate: number
 }

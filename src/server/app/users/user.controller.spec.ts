@@ -19,9 +19,9 @@ describe('UserController', () => {
 
     describe('findAll', () => {
         it('should return an array of users', () => {
-            expect(1).toBe(1);
-        });
-    });
+            expect(1).toBe(1)
+        })
+    })
 
     // describe('findAll', () => {
     //     it('should return an array of users', async () => {
@@ -36,4 +36,4 @@ describe('UserController', () => {
     //     jest.resetAllMocks();
     // });
 
-});
+})
