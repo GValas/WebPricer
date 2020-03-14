@@ -1,8 +1,8 @@
-import { Currency } from './currency.interface'
+import { ICurrency } from './currency.interface'
 
-export interface Underlying {
-  readonly code: string
-  readonly spot: number
-  readonly volatility: number
-  readonly currency: string
+export interface IUnderlying {
+    readonly code: string
+    readonly spot: number
+    readonly volatility: number
+    readonly currency: string
 }

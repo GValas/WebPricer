@@ -1,5 +1,4 @@
-
-export interface Currency {
-  readonly code: string
-  readonly rate: number
+export interface ICurrency {
+    readonly code: string
+    readonly rate: number
 }

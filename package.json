@@ -14,7 +14,9 @@
         "server:app:start:prod": "node dist/server/app/main.js",
         "test": "jest",
         "test:watch": "jest --watch",
-        "test:coverage": "jest --coverage"
+        "test:coverage": "jest --coverage",
+        "tslint:warnings": "tslint ./src/**/*.ts",
+        "tslint:autofix": "tslint ./src/**/*.ts --fix"
     },
     "dependencies": {
         "@hapi/joi": "^16.1.7",

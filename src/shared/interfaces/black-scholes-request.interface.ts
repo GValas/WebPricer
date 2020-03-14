@@ -1,6 +1,6 @@
 import { VanillaType } from '../enums/vanilla-type.enum'
 
-export interface BlackScholesDescription {
+export interface IBlackScholesDescription {
     spot: number
     strike: number
     volatility: number

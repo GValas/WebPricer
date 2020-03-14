@@ -1,8 +1,4 @@
-import {
-  SubscribeMessage,
-  WebSocketGateway,
-  WebSocketServer,
-} from '@nestjs/websockets'
+import { SubscribeMessage, WebSocketGateway, WebSocketServer } from '@nestjs/websockets'
 import { interval } from 'rxjs'
 import { map } from 'rxjs/operators'
 import { Client, Server } from 'ws'
@@ -12,50 +8,44 @@ import { UnderlyingService } from '../../shared/services/underlying.service'
 
 @WebSocketGateway(8080)
 export class EventsGateway {
+    constructor(private readonly underlyingService: UnderlyingService) {}
 
-  constructor(
-    private readonly underlyingService: UnderlyingService) { }
+    @WebSocketServer()
+    server: Server
 
-  @WebSocketServer()
-  server: Server
+    @SubscribeMessage('events')
+    async onEvent(client: Client, data: any) {
+        const udl = await this.underlyingService.findAll()
+        console.log(udl)
 
-  @SubscribeMessage('events')
-  async onEvent(client: Client, data: any) {
+        const mat = 1
+        let spot = 100
+        const strike = spot
+        const rate = 0.08
+        const volatility = 0.3
+        const dt = mat / 365.0
+        const spotGen = stockDiffusion(spot, volatility, rate, dt)
 
-    const udl = (await this.underlyingService.findAll())
-    console.log(udl)
+        return interval(10).pipe(
+            map(i => {
+                spot = spotGen.next().value as number
+                const timeToMaturity = mat - i * dt
+                const call = priceVanilla({
+                    vanillaType: VanillaType.Call,
+                    spot,
+                    rate,
+                    timeToMaturity,
+                    strike,
+                    volatility
+                })
 
-    const mat = 1
-    let spot = 100
-    const strike = spot
-    const rate = 0.08
-    const volatility = 0.3
-    const dt = mat / 365.0
-    const spotGen = stockDiffusion(spot, volatility, rate, dt)
-
-    return interval(10)
-      .pipe(
-        map(i => {
-
-          spot = spotGen.next().value as number
-          const timeToMaturity = mat - i * dt
-          const call = priceVanilla({
-            vanillaType: VanillaType.Call,
-            spot,
-            rate,
-            timeToMaturity,
-            strike,
-            volatility,
-          })
-
-          return {
-            step: i,
-            spot,
-            forward: call.forward,
-            price: call.price,
-          }
-        }),
-      )
-  }
-
+                return {
+                    step: i,
+                    spot,
+                    forward: call.forward,
+                    price: call.price
+                }
+            })
+        )
+    }
 }

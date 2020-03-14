@@ -8,25 +8,25 @@ import { AppModule } from './app.module'
 import config from './config/config'
 
 async function bootstrap() {
+    const httpsOptions = {
+        key: fs.readFileSync(path.resolve(__dirname, './config/secrets/private-key.pem')),
+        cert: fs.readFileSync(path.resolve(__dirname, './config/secrets/public-certificate.pem'))
+    }
 
-  const httpsOptions = {
-    key: fs.readFileSync(path.resolve(__dirname, './config/secrets/private-key.pem')),
-    cert: fs.readFileSync(path.resolve(__dirname, './config/secrets/public-certificate.pem')),
-  }
+    const app = await NestFactory.create(AppModule, {
+        httpsOptions
+    })
 
-  const app = await NestFactory.create(AppModule, {
-    httpsOptions,
-  })
+    app.enableCors()
+        .use(helmet())
+        .use(compression())
+        .use(
+            rateLimit({
+                windowMs: config.rateLimit.windowMs,
+                max: config.rateLimit.maxRequestPerMs
+            })
+        )
 
-  app
-    .enableCors()
-    .use(helmet())
-    .use(compression())
-    .use(rateLimit({
-      windowMs: config.rateLimit.windowMs,
-      max: config.rateLimit.maxRequestPerMs,
-    }))
-
-  await app.listen(config.port)
+    await app.listen(config.port)
 }
 bootstrap()
